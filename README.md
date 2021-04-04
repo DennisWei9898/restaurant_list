@@ -16,6 +16,7 @@
 2.安裝套件：
 
 > npm install express `安裝 express 套件`
+
 > npm run dev `安裝專案中的 pcakage.json 腳本`
 
 3.建置 express server
