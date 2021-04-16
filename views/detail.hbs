@@ -11,7 +11,7 @@
   </nav>
 
   <div class="banner"></div>
-  <link rel="stylesheet" href="/stylesheets/restaurant.css">
+
 </header>
 
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
@@ -54,4 +54,13 @@
         style="max-width: 600px;">
     </div>
   </div>
+  <form action="/restaurants/{{ restaurant._id }}/edit" method="GET" style="display: inline;">
+    <button type="submit">Edit</button>
+  </form>
+  <form action="/" method="GET" style="display: inline;">
+    <button type="submit">Back</button>
+  </form>
+  <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
+    <button type="submit">Delete</button>
+  </form>
 </div>

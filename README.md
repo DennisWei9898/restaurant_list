@@ -1,27 +1,59 @@
-# 餐廳清單
+# Project name：餐廳清單
 
-- 此專案讓使用者可以查看想去餐廳的介紹，並且可以搜尋
+- 此專案讓使用者可以建立自己想要的美食地圖，包含瀏覽、新增、刪除和修改餐廳資訊（如評價、google map 等等）
 
-## 功能列表
+# Features：功能列表
 
-- 可以搜尋餐廳名稱
-- 可以進入餐廳的單獨分頁，看更多介紹
+- Ｃ：使用者可以新增喜歡的餐廳
+  - 在首頁點選`新建餐廳`中的`Create`按鈕，可以新建你心儀的餐廳
+  - 輸入好資訊後，按下`Save`，即可在首頁觀看到已經存擋的餐廳
+- Ｒ：使用者可以瀏覽全部或一家餐廳的資訊
+  - 點選`Detail`或是`餐廳圖片`，可以進去瀏覽詳細的餐廳資訊
+  - 點選`Back`可以回到首頁
+- Ｕ：使用者可以修改一家餐廳的資訊
+  - 點選`Edit`可以編輯該餐廳的詳細資訊
+- Ｄ：使用者可以刪除任何一家不想要的餐廳
+  - 在首頁點選該餐廳卡片中的`delete`按鈕，即可刪除不想要的餐廳
+  - 若進去瀏覽該餐廳詳細資訊，發現這不是心目中的樣子，亦可按下`Delete`按鈕，刪除後自動回到首頁
 
-# 安裝
+# Environment Setup：環境安裝
 
-1.開啟終端機，並 cd 到預計要儲存的專案位置，執行：
+[Node.js](https://nodejs.org/en/)
+[Express](https://expressjs.com/)
+[Mongobd](https://www.mongodb.com/)
 
-> git clone //複製餐廳清單資料夾
+# Installing Procedure：專案安裝
 
-2.安裝套件：
+1.開啟終端機，新建資料夾後，並 cd 到預計要儲存的專案位置，執行：
 
-> npm install express `安裝 express 套件`
+```
+mkdir restaurant_list //建立專案資料夾
+```
 
-> npm run dev `安裝專案中的 pcakage.json 腳本`
+```
+cd restaurant_list //切換到專案資料夾
+```
 
-3.建置 express server
+```
+git clone https://github.com/DennisWei9898/restaurant_list.git
+```
 
-> nodemon app.js `啟動 express server`
+2.安裝套件和種子資料：
+
+```
+npm install //安裝 npm 套件
+```
+
+```
+npm run seed //安裝種子資料
+```
+
+3.啟動伺服器，執行 app.js 檔案
+
+```
+npm run dev //成功啟動後，終端機會顯示：This server is running on http://localhost:3000
+            //mongodb connected!
+```
 
 4.打開網址，體驗餐廳清單
 
@@ -29,8 +61,8 @@
 
 # 作業過程
 
-- 先快速按照前面的流程複習一遍，第一次先把 movie list 的 json 和資料換成 restaurant 的資料
+- 先快速按照前面的流程複習一遍，並想辦法將
 
-- 後續再慢慢把 index show main 的 handlebars 換成作業所需的格式
+- 建置餐廳資料格式那裡卡了一下，後面有參考同學和學長的做法，但感覺應該有更好的方式，可以直接建構出來
 
-- 未被解決的部分：餐廳清單中的 icon 都跑不出來(電話，地址，類別等)，已經試了很多方法但還是無法像 codepan 中一樣有出現，有試著將 codepan 的 CSS 另建資料夾，一樣引入到 main.handlebars，但都沒有用
+- 未被解決的部分：有試著想要導入搜尋功能，但好像無法呈現，好奇後面的課程是否會教到 www，期待期待
