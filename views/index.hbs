@@ -15,25 +15,55 @@
 </header>
 
 
-
-<!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
+<div class="container mt-2">
+  <!-- search bar & create button -->
+  <div class="row d-flex justify-content-between" id="search-bar">
+    <div>
+      <form action="./restaurants/new">
+        <h4 class="mb-2">新建餐廳：</h4>
         <div class="input-group">
-          <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="輸入餐廳、分類"
-            aria-label="Restaurant Name..." value="" aria-describedby="search-button">
           <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-success" type="submit">Create</button>
           </div>
         </div>
       </form>
     </div>
+    <!-- search bar -->
+    <div class="container search-bar">
+      <div class="search-bar-outer">
+        <div class="search-bar-inner">
+          <form action="/search">
+            <h4 class="mb-2">尋找餐廳：</h4>
+            <div class="input-group">
+              <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="輸入餐廳、分類"
+                aria-label="Restaurant Name..." value="" aria-describedby="search-button">
+              <div class="input-group-append">
+                <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- select button -->
+    <div class="mb-3 mr-3" style="width: 7vw;">
+      <form action="/sort" method="GET">
+        <label for="order">篩選順序</label>
+        <select name="sort" id='inputType' onchange="this.form.submit()">
+          <option value="" disabled selected>--請選擇篩選項目--</option>
+          <option value="name" {{#if (eq sort 'name' ) }} selected {{/if}}>A->Z</option>
+          <option value="name-desc" {{#if (eq sort 'name-desc' )}} selected {{/if}}>Z->A</option>
+          <option value="category-asc" {{#if (eq sort 'category-asc' ) }} selected {{/if}}>類別</option>
+          <option value="location-asc" {{#if (eq sort 'location-asc' ) }} selected {{/if}}>地區</option>
+          <option value="rating-des" {{#if (eq sort 'rating-des' ) }} selected {{/if}}>評分</option>
+        </select>
+      </form>
+
+    </div>
   </div>
 </div>
 
+{{!--
 <!-- Create Restaurant -->
 <div class="container search-bar">
   <div class="mb-4"></div>
@@ -51,14 +81,14 @@
       </form>
     </div>
   </div>
-</div>
+</div> --}}
 
 <!-- restaurant list -->
 <div class="container mt-5">
 
   <div class="row">
 
-    <div class="col-md-10 col-12 mx-auto">
+    <div class="col-md-8 col-12 mx-auto">
 
       <div class="card-columns">
         {{#each restaurants}}
@@ -81,10 +111,10 @@
             <form action="/restaurants/{{ this._id }}" method="GET" style="display: inline;">
               <button type="submit">Detail</button>
             </form>
-            <form action="/restaurants/{{ this._id }}/edit" method="GET" style="display: inline;">
+            <form action="/restaurants/{{ this._id }}/?_method=PUT" method="GET" style="display: inline;">
               <button type="submit">Edit</button>
             </form>
-            <form action="/restaurants/{{ this._id }}/delete" method="POST" style="display: inline;">
+            <form action="/restaurants/{{ this._id }}/?_method=DELETE" method="POST" style="display: inline;">
               <button type="submit">Delete</button>
             </form>
           </div>
