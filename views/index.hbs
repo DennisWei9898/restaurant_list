@@ -51,11 +51,11 @@
         <label for="order">篩選順序</label>
         <select name="sort" id='inputType' onchange="this.form.submit()">
           <option value="" disabled selected>--請選擇篩選項目--</option>
-          <option value="name" {{#if (eq sort 'name' ) }} selected {{/if}}>A->Z</option>
+          <option value="name-asc" {{#if (eq sort 'name-asc' ) }} selected {{/if}}>A->Z</option>
           <option value="name-desc" {{#if (eq sort 'name-desc' )}} selected {{/if}}>Z->A</option>
           <option value="category-asc" {{#if (eq sort 'category-asc' ) }} selected {{/if}}>類別</option>
           <option value="location-asc" {{#if (eq sort 'location-asc' ) }} selected {{/if}}>地區</option>
-          <option value="rating-des" {{#if (eq sort 'rating-des' ) }} selected {{/if}}>評分</option>
+          <option value="rating-desc" {{#if (eq sort 'rating-desc' ) }} selected {{/if}}>評分</option>
         </select>
       </form>
 
