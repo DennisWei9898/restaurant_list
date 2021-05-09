@@ -17,9 +17,8 @@ router.get('/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
-    .then((restaurant) => res.render('detail', { restaurant })
-      .catch(error => console.log(error))
-    )
+    .then((restaurant) => res.render('detail', { restaurant }))
+    .catch(error => console.log(error))
 }
 )
 
@@ -27,13 +26,12 @@ router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
-    .then((restaurant) => res.render('edit', { restaurant })
-      .catch(error => console.log(error))
-    )
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
 }
 )
 
-router.put('/:id/', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => {
