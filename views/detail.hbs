@@ -54,13 +54,20 @@
         style="max-width: 600px;">
     </div>
   </div>
-  <form action="/restaurants/{{ restaurant._id }}/edit" method="GET" style="display: inline;">
-    <button type="submit">Edit</button>
-  </form>
-  <form action="/" method="GET" style="display: inline;">
-    <button type="submit">Back</button>
-  </form>
-  <form action="/restaurants/{{ restaurant._id }}/?_method=DELETE" method="POST" style="display: inline;">
-    <button type="submit">Delete</button>
-  </form>
+  <div class="d-flex justify-content-start">
+    <div class="me-1">
+      <form action="/restaurants/{{restaurant._id}}/edit"><button type="submit" class="btn btn-light btn-sm"><i
+            class="fas fa-edit"></i></button></form>
+    </div>
+    </form>
+    <form action="/restaurants/{{restaurant._id}}?_method=DELETE" method="POST" style="display: inline;">
+      <button type="submit" class="btn btn-danger btn-sm">
+        <i class="fas fa-trash-alt"></i></button>
+    </form>
+    <form action="/" method="GET" style="display: inline;">
+      <button type="submit" class="btn btn-secondary btn-sm">
+        <i class="fas fa-undo-alt"></i>
+      </button>
+    </form>
+  </div>
 </div>

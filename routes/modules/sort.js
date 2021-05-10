@@ -3,7 +3,6 @@ const Restaurant = require('../../models/restaurant')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  // let re = /=/
   const sort = req.query.sort
   const [sortType, sortMethod] = sort.split('-')
   console.log(sort)
