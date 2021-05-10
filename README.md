@@ -10,6 +10,7 @@
 - Ｒ：使用者可以瀏覽全部或一家餐廳的資訊
   - 點選`Detail`或是`餐廳圖片`，可以進去瀏覽詳細的餐廳資訊
   - 點選`Back`可以回到首頁
+  - 可以在搜尋框中，尋找想要去的餐廳
 - Ｕ：使用者可以修改一家餐廳的資訊
   - 點選`Edit`可以編輯該餐廳的詳細資訊
 - Ｄ：使用者可以刪除任何一家不想要的餐廳
@@ -20,7 +21,7 @@
 
 [Node.js](https://nodejs.org/en/)
 [Express](https://expressjs.com/)
-[Mongobd](https://www.mongodb.com/)
+[Mongodb](https://www.mongodb.com/)
 
 # Installing Procedure：專案安裝
 
@@ -61,7 +62,7 @@ npm run dev //成功啟動後，終端機會顯示：This server is running on h
 
 # 作業過程
 
-- 先快速按照前面的流程複習一遍，並想辦法將route和資料流的部分處理好
+- 先快速按照前面的流程複習一遍，並想辦法將 route 和資料流的部分處理好
 
 - 建置餐廳資料格式那裡卡了一下，後面有參考同學和學長的做法，但感覺應該有更好的方式，可以直接建構出來
 
