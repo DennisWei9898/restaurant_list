@@ -26,18 +26,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(routes)
 
-// app.get('/restaurants/search', (req, res) => {
-//   const regex = new RegExp(escapeRegex(req.query.keyword), 'gi')
-//   return Restaurant.find({ name: regex })
-//     .lean()
-//     .then(restaurants => res.render('index', { restaurants }))
-//   function escapeRegex(text) {
-//     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\ $&");
-//   };
-// })
-
-// start and listen express server
-
 app.listen(port, () => {
   console.log(`This server is running on http://localhost:${port}`)
 })
