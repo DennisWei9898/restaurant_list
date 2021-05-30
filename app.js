@@ -1,6 +1,7 @@
 // import module and model
 const express = require('express')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
@@ -11,9 +12,11 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
+const app = express()
+usePassport(app)
+
 const routes = require('./routes')
 require('./config/mongoose')
-const app = express()
 
 // setting template engine
 app.engine('hbs', exphbs(
