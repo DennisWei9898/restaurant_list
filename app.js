@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
 const routes = require('./routes')
 require('./config/mongoose')
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT 
 
 // setting template engine
 app.engine('hbs', exphbs(
