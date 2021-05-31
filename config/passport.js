@@ -1,49 +1,47 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const FacebookStrategy = require('passport-facebook').Strategy
-const bcrypt = require('bcryptjs')
-
 const User = require('../models/user')
+const bcrypt = require('bcryptjs')
+const FacebookStrategy = require('passport-facebook').Strategy
 
 module.exports = app => {
   app.use(passport.initialize())
   app.use(passport.session())
-
-  passport.use(new LocalStrategy({ usernameField: 'email' }, (req, email, password, done) => {
+  passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true }, (req, email, password, done) => {
     User.findOne({ email })
       .then(user => {
         if (!user) {
-          return done(null, false, req.flash('warning_msg', '此信箱無人註冊'))
+          return done(null, false, req.flash('login_error_msg', '查無此會員信箱'))
         }
         return bcrypt.compare(password, user.password).then(isMatch => {
           if (!isMatch) {
-            return done(null, false, req.flash('warning_msg', '信箱或是密碼不正確'))
+            return done(null, false, req.flash('login_error_msg', '信箱或密碼有誤！'))
           }
           return done(null, user)
         })
       })
       .catch(err => done(err, false))
   }))
+
   passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_ID,
     clientSecret: process.env.FACEBOOK_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK,
     profileFields: ['email', 'displayName']
-  },
-  (accessToken, refreshToken, profile, done) => {
+  }, (accessToken, refreshToken, profile, done) => {
     const { name, email } = profile._json
     User.findOne({ email })
       .then(user => {
         if (user) return done(null, user)
-
         const randomPassword = Math.random().toString(36).slice(-8)
-
         bcrypt
           .genSalt(10)
-          .then(salt =>
-            bcrypt.hash(randomPassword, salt)
-          )
-          .then(hash => User.create({ name, email, password: hash }))
+          .then(salt => bcrypt.hash(randomPassword, salt))
+          .then(hash => User.create({
+            name,
+            email,
+            password: hash
+          }))
           .then(user => done(null, user))
           .catch(err => done(err, false))
       })
